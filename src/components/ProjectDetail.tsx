@@ -3,6 +3,20 @@
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
 import { ProjectThumbnail } from './ProjectThumbnail'
+import { IgsuCrmArchitecture } from './diagrams/IgsuCrmArchitecture'
+import { IgsuCrmProcess } from './diagrams/IgsuCrmProcess'
+import { MsbArchitecture } from './diagrams/MsbArchitecture'
+import { CareerAiArchitecture } from './diagrams/CareerAiArchitecture'
+
+const architectureDiagrams: Record<string, () => JSX.Element> = {
+  'igsu-crm': IgsuCrmArchitecture,
+  msb: MsbArchitecture,
+  careerai: CareerAiArchitecture,
+}
+
+const processDiagrams: Record<string, () => JSX.Element> = {
+  'igsu-crm': IgsuCrmProcess,
+}
 
 export function ProjectDetail({ slug }: { slug: string }) {
   const { t } = useLanguage()
@@ -11,6 +25,9 @@ export function ProjectDetail({ slug }: { slug: string }) {
   if (!project) {
     return null
   }
+
+  const ArchitectureDiagram = architectureDiagrams[slug]
+  const ProcessDiagram = processDiagrams[slug]
 
   return (
     <article>
@@ -33,6 +50,24 @@ export function ProjectDetail({ slug }: { slug: string }) {
 
       <h2 className="mt-8 font-mono text-accent">{t.projects.approachLabel}</h2>
       <p className="mt-2 text-text-secondary">{project.approach}</p>
+
+      {ArchitectureDiagram && (
+        <>
+          <h2 className="mt-8 font-mono text-accent">{t.projects.architectureLabel}</h2>
+          <div className="mt-4 rounded-lg bg-background-alt p-4">
+            <ArchitectureDiagram />
+          </div>
+        </>
+      )}
+
+      {ProcessDiagram && (
+        <>
+          <h2 className="mt-8 font-mono text-accent">{t.projects.processLabel}</h2>
+          <div className="mt-4 rounded-lg bg-background-alt p-4">
+            <ProcessDiagram />
+          </div>
+        </>
+      )}
 
       <h2 className="mt-8 font-mono text-accent">{t.projects.resultsLabel}</h2>
       <ul className="mt-2 list-disc space-y-1 pl-5 text-text-secondary">

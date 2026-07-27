@@ -74,6 +74,8 @@ export const en: SiteContent = {
     problemLabel: 'Problem',
     approachLabel: 'Approach',
     resultsLabel: 'Results',
+    architectureLabel: 'Architecture',
+    processLabel: 'Process',
     entries: [
       {
         slug: 'igsu-crm',

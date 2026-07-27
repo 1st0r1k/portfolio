@@ -52,6 +52,8 @@ export interface SiteContent {
     problemLabel: string
     approachLabel: string
     resultsLabel: string
+    architectureLabel: string
+    processLabel: string
     entries: ProjectEntry[]
   }
   skills: {

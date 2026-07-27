@@ -37,8 +37,7 @@ describe('ProjectDetail', () => {
         <ProjectDetail slug="msb" />
       </LanguageProvider>
     )
-    const project = content.en.projects.entries.find((p) => p.slug === 'msb')!
-    expect(screen.getByRole('img', { name: new RegExp(project.title.split(' ')[0]) })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /screenshot coming soon/i })).toBeInTheDocument()
   })
 
   it('renders every result bullet for the given slug', () => {
@@ -98,5 +97,35 @@ describe('ProjectDetail', () => {
     expect(screen.getByText(content.en.projects.problemLabel)).toBeInTheDocument()
     expect(screen.getByText(content.en.projects.approachLabel)).toBeInTheDocument()
     expect(screen.getByText(content.en.projects.resultsLabel)).toBeInTheDocument()
+  })
+
+  it('renders an architecture diagram for every project', () => {
+    ;['igsu-crm', 'msb', 'careerai'].forEach((slug) => {
+      const { unmount } = render(
+        <LanguageProvider>
+          <ProjectDetail slug={slug} />
+        </LanguageProvider>
+      )
+      expect(screen.getByText(content.en.projects.architectureLabel)).toBeInTheDocument()
+      unmount()
+    })
+  })
+
+  it('renders a BPMN process diagram only for igsu-crm', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail slug="igsu-crm" />
+      </LanguageProvider>
+    )
+    expect(screen.getByText(content.en.projects.processLabel)).toBeInTheDocument()
+  })
+
+  it('does not render a process section for projects without a process diagram', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail slug="msb" />
+      </LanguageProvider>
+    )
+    expect(screen.queryByText(content.en.projects.processLabel)).toBeNull()
   })
 })

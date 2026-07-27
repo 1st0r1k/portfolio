@@ -74,6 +74,8 @@ export const ru: SiteContent = {
     problemLabel: 'Проблема',
     approachLabel: 'Решение',
     resultsLabel: 'Результаты',
+    architectureLabel: 'Архитектура',
+    processLabel: 'Процесс',
     entries: [
       {
         slug: 'igsu-crm',
