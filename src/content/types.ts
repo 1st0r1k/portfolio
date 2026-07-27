@@ -12,8 +12,11 @@ export interface ExperienceEntry {
 }
 
 export interface ProjectEntry {
+  slug: string
   title: string
   description: string
+  problem: string
+  approach: string
   bullets: string[]
   tags: string[]
   link?: string
@@ -43,6 +46,8 @@ export interface SiteContent {
   }
   projects: {
     heading: string
+    readMoreLabel: string
+    backLabel: string
     entries: ProjectEntry[]
   }
   skills: {

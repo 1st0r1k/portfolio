@@ -69,11 +69,18 @@ export const en: SiteContent = {
   },
   projects: {
     heading: 'Projects',
+    readMoreLabel: 'Read case study',
+    backLabel: '← Back to projects',
     entries: [
       {
+        slug: 'igsu-crm',
         title: 'IGSU CRM',
         description:
           "Full-stack admissions CRM designed and built from scratch after evaluating off-the-shelf tools and finding none fit the institute's process.",
+        problem:
+          "The institute's admissions process didn't fit any off-the-shelf CRM: it needed contract tracking, funnel analytics, and a flexible database builder with role-based access — after evaluating several commercial tools, none covered all three without heavy customization.",
+        approach:
+          'Designed the data model and system architecture from scratch on Next.js (App Router), TypeScript, Prisma and PostgreSQL, with NextAuth for role-based access. Built two-way integrations with Bitrix24 CRM and Google Sheets (OAuth, streaming CSV import for 50,000+ rows without memory overflow), and moved reporting aggregation from the application layer into SQL (GROUP BY), cutting report generation time by roughly 30x. Shipped with CI running 900+ automated tests, Docker-based deployment and automated backups.',
         bullets: [
           'Designed the data model and architecture for contract tracking, admissions-funnel analytics and a custom database builder with role-based access control.',
           'Built two-way integrations with Bitrix24 CRM and Google Sheets — OAuth, streaming CSV import for 50,000+ rows.',
@@ -83,9 +90,14 @@ export const en: SiteContent = {
         tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'NextAuth', 'Docker'],
       },
       {
+        slug: 'msb',
         title: 'MSB — Messenger Sync Bridge',
         description:
           'Real-time message-sync service between Telegram, VK and Max for media companies running parallel social channels.',
+        problem:
+          'Media companies running parallel channels on Telegram, VK and Max needed messages synced across platforms in real time — with no existing tool handling three-way bidirectional sync, filtering and role-based access together.',
+        approach:
+          "Built bidirectional \"bridges\" between channels across platforms on NestJS, PostgreSQL and Redis Streams-based queues, with adapters normalizing each platform's API into a single internal message model. Implemented a VK OAuth integration using the implicit token flow to work around VK's restrictions on third-party publishing. Deployed via Docker Compose with encrypted bot-token storage (AES-256-GCM) and CI/CD.",
         bullets: [
           'Designed bidirectional "bridges" between channels across platforms, including message filtering, role-based access and Redis Streams-based queues.',
           'Built adapters for the Telegram, VK and Max APIs, normalizing messages into a single internal data model.',
@@ -96,9 +108,14 @@ export const en: SiteContent = {
         link: 'https://github.com/1st0r1k/msb',
       },
       {
+        slug: 'careerai',
         title: 'CareerAI',
         description:
           'AI job-search assistant (Telegram bot + web app) aggregating listings from 5+ sources and matching them to resumes via embeddings and an LLM.',
+        problem:
+          'Job seekers have to manually check listings across many separate sites and guess which postings actually match their resume.',
+        approach:
+          "Built a Telegram bot and web app that aggregate listings from 5+ sources into a single pipeline, then match them to a user's resume using vector embeddings and an LLM, ranking relevance instead of just keyword-matching.",
         bullets: [
           'Built resume-to-listing matching using vector embeddings and an LLM.',
           'Aggregated job listings from 5+ sources into a unified pipeline.',
