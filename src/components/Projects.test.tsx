@@ -16,26 +16,40 @@ describe('Projects', () => {
     })
   })
 
-  it('links the MSB project to its GitHub repository', () => {
+  it('renders a "read case study" link to /projects/<slug> for every tile', () => {
     render(
       <LanguageProvider>
         <Projects />
       </LanguageProvider>
     )
-    const msb = content.en.projects.entries.find((p) => p.title.includes('MSB'))
-    expect(msb?.link).toBeDefined()
-    expect(screen.getByText(msb!.title).closest('a')).toHaveAttribute('href', msb!.link)
+    const readMoreLinks = screen.getAllByText(content.en.projects.readMoreLabel)
+    expect(readMoreLinks).toHaveLength(content.en.projects.entries.length)
+    content.en.projects.entries.forEach((project) => {
+      const link = readMoreLinks.find((el) => el.closest('a')?.getAttribute('href')?.endsWith(`/projects/${project.slug}`))
+      expect(link).toBeDefined()
+    })
   })
 
-  it('does not render a link for projects without one', () => {
+  it('renders an external GitHub link for the MSB project', () => {
     render(
       <LanguageProvider>
         <Projects />
       </LanguageProvider>
     )
-    const igsu = content.en.projects.entries.find((p) => p.title.includes('IGSU'))
+    const msb = content.en.projects.entries.find((p) => p.slug === 'msb')
+    expect(msb?.link).toBeDefined()
+    expect(screen.getByRole('link', { name: `GitHub — ${msb!.title}` })).toHaveAttribute('href', msb!.link)
+  })
+
+  it('does not render an external GitHub link for projects without one', () => {
+    render(
+      <LanguageProvider>
+        <Projects />
+      </LanguageProvider>
+    )
+    const igsu = content.en.projects.entries.find((p) => p.slug === 'igsu-crm')
     expect(igsu?.link).toBeUndefined()
-    expect(screen.getByText(igsu!.title).closest('a')).toBeNull()
+    expect(screen.queryByRole('link', { name: `GitHub — ${igsu!.title}` })).toBeNull()
   })
 
   it('has id="projects" so the sidebar nav link can target it', () => {
