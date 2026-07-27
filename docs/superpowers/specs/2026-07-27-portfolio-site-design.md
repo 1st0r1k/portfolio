@@ -29,9 +29,9 @@ Real content sourced from `Resume_Bugrov_Systems.pdf`. Summary:
 ## Architecture
 
 - **Framework:** Next.js 14 (App Router) + TypeScript + Tailwind CSS
-- **Rendering:** Static export (`output: 'export'` in `next.config.ts`) — no server runtime needed
+- **Rendering:** Static export (`output: 'export'` in `next.config.mjs`) — no server runtime needed
 - **Hosting:** GitHub Pages, project site at `1st0r1k.github.io/portfolio`
-  - `basePath: '/portfolio'` and `assetPrefix` configured in `next.config.ts`
+  - `basePath: '/portfolio'` and `assetPrefix` configured in `next.config.mjs`
   - Deployed via a GitHub Actions workflow (`.github/workflows/deploy.yml`) that builds on push to
     `main` and publishes the `out/` directory using `actions/deploy-pages`
 - **i18n (RU/EN):** No Next.js built-in i18n routing (conflicts with static export + basePath).

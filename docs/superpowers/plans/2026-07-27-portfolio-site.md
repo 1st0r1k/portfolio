@@ -17,7 +17,7 @@
 **Files:**
 - Create: `package.json`
 - Create: `tsconfig.json`
-- Create: `next.config.ts`
+- Create: `next.config.mjs`
 - Create: `next-env.d.ts`
 - Create: `.gitignore`
 - Create: `src/app/globals.css`
@@ -89,7 +89,7 @@ This task is configuration/tooling setup (no application behavior), which is the
 }
 ```
 
-- [ ] **Step 3: Create `next.config.ts`**
+- [ ] **Step 3: Create `next.config.mjs`**
 
 ```ts
 import type { NextConfig } from 'next'
@@ -141,7 +141,7 @@ Expected: installs cleanly, creates `package-lock.json` and `node_modules/`.
 - [ ] **Step 8: Commit**
 
 ```bash
-git add package.json package-lock.json tsconfig.json next.config.ts next-env.d.ts .gitignore src/app/globals.css
+git add package.json package-lock.json tsconfig.json next.config.mjs next-env.d.ts .gitignore src/app/globals.css
 git commit -m "chore: scaffold Next.js + TypeScript project"
 ```
 
