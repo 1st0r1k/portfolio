@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
+import { ProjectThumbnail } from './ProjectThumbnail'
 
 export function ProjectDetail({ slug }: { slug: string }) {
   const { t } = useLanguage()
@@ -18,7 +19,10 @@ export function ProjectDetail({ slug }: { slug: string }) {
       </Link>
 
       <h1 className="mt-4 text-2xl font-bold text-text-primary">{project.title}</h1>
-      <ul className="mt-3 flex flex-wrap gap-2 font-mono text-xs text-text-secondary">
+      <div className="mt-4">
+        <ProjectThumbnail title={project.title} image={project.image} />
+      </div>
+      <ul className="mt-4 flex flex-wrap gap-2 font-mono text-xs text-text-secondary">
         {project.tags.map((tag) => (
           <li key={tag}>{tag}</li>
         ))}

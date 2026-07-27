@@ -26,9 +26,19 @@ describe('ProjectDetail', () => {
       </LanguageProvider>
     )
     const project = content.en.projects.entries.find((p) => p.slug === 'msb')!
-    expect(screen.getByText(project.title)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: project.title, level: 1 })).toBeInTheDocument()
     expect(screen.getByText(project.problem)).toBeInTheDocument()
     expect(screen.getByText(project.approach)).toBeInTheDocument()
+  })
+
+  it('renders a thumbnail for the project', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail slug="msb" />
+      </LanguageProvider>
+    )
+    const project = content.en.projects.entries.find((p) => p.slug === 'msb')!
+    expect(screen.getByRole('img', { name: new RegExp(project.title.split(' ')[0]) })).toBeInTheDocument()
   })
 
   it('renders every result bullet for the given slug', () => {

@@ -12,7 +12,7 @@ describe('Projects', () => {
       </LanguageProvider>
     )
     content.en.projects.entries.forEach((project) => {
-      expect(screen.getByText(project.title)).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: project.title })).toBeInTheDocument()
     })
   })
 
@@ -50,6 +50,17 @@ describe('Projects', () => {
     const igsu = content.en.projects.entries.find((p) => p.slug === 'igsu-crm')
     expect(igsu?.link).toBeUndefined()
     expect(screen.queryByRole('link', { name: `GitHub — ${igsu!.title}` })).toBeNull()
+  })
+
+  it('renders a thumbnail for every project tile', () => {
+    render(
+      <LanguageProvider>
+        <Projects />
+      </LanguageProvider>
+    )
+    content.en.projects.entries.forEach((project) => {
+      expect(screen.getByRole('img', { name: new RegExp(project.title.split(' ')[0]) })).toBeInTheDocument()
+    })
   })
 
   it('has id="projects" so the sidebar nav link can target it', () => {

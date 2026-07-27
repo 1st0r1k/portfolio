@@ -20,6 +20,7 @@ export interface ProjectEntry {
   bullets: string[]
   tags: string[]
   link?: string
+  image?: string
 }
 
 export interface SkillCategory {
