@@ -108,7 +108,6 @@ export const ru: SiteContent = {
           'Настроил продакшн-деплой: Docker Compose, шифрованное хранение bot-токенов (AES-256-GCM), CI/CD.',
         ],
         tags: ['NestJS', 'PostgreSQL', 'Redis', 'Docker', 'React'],
-        link: 'https://github.com/1st0r1k/msb',
       },
       {
         slug: 'careerai',

@@ -53,27 +53,17 @@ describe('ProjectDetail', () => {
     })
   })
 
-  it('renders an external GitHub link when the project has one', () => {
-    render(
-      <LanguageProvider>
-        <ProjectDetail slug="msb" />
-      </LanguageProvider>
-    )
-    const project = content.en.projects.entries.find((p) => p.slug === 'msb')!
-    expect(screen.getByRole('link', { name: `GitHub — ${project.title}` })).toHaveAttribute(
-      'href',
-      project.link
-    )
-  })
-
-  it('does not render an external GitHub link when the project has none', () => {
-    render(
-      <LanguageProvider>
-        <ProjectDetail slug="igsu-crm" />
-      </LanguageProvider>
-    )
-    const project = content.en.projects.entries.find((p) => p.slug === 'igsu-crm')!
-    expect(screen.queryByRole('link', { name: `GitHub — ${project.title}` })).toBeNull()
+  it('does not render an external GitHub link for any project (repos are private)', () => {
+    content.en.projects.entries.forEach((project) => {
+      const { unmount } = render(
+        <LanguageProvider>
+          <ProjectDetail slug={project.slug} />
+        </LanguageProvider>
+      )
+      expect(project.link).toBeUndefined()
+      expect(screen.queryByRole('link', { name: `GitHub — ${project.title}` })).toBeNull()
+      unmount()
+    })
   })
 
   it('renders a back link to the projects section on the home page', () => {

@@ -30,26 +30,16 @@ describe('Projects', () => {
     })
   })
 
-  it('renders an external GitHub link for the MSB project', () => {
+  it('does not render an external GitHub link for any project (repos are private)', () => {
     render(
       <LanguageProvider>
         <Projects />
       </LanguageProvider>
     )
-    const msb = content.en.projects.entries.find((p) => p.slug === 'msb')
-    expect(msb?.link).toBeDefined()
-    expect(screen.getByRole('link', { name: `GitHub — ${msb!.title}` })).toHaveAttribute('href', msb!.link)
-  })
-
-  it('does not render an external GitHub link for projects without one', () => {
-    render(
-      <LanguageProvider>
-        <Projects />
-      </LanguageProvider>
-    )
-    const igsu = content.en.projects.entries.find((p) => p.slug === 'igsu-crm')
-    expect(igsu?.link).toBeUndefined()
-    expect(screen.queryByRole('link', { name: `GitHub — ${igsu!.title}` })).toBeNull()
+    content.en.projects.entries.forEach((project) => {
+      expect(project.link).toBeUndefined()
+      expect(screen.queryByRole('link', { name: `GitHub — ${project.title}` })).toBeNull()
+    })
   })
 
   it('renders a thumbnail for every project tile', () => {

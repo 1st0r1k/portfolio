@@ -108,7 +108,6 @@ export const en: SiteContent = {
           'Set up production deployment: Docker Compose, encrypted bot-token storage (AES-256-GCM), CI/CD.',
         ],
         tags: ['NestJS', 'PostgreSQL', 'Redis', 'Docker', 'React'],
-        link: 'https://github.com/1st0r1k/msb',
       },
       {
         slug: 'careerai',
