@@ -48,6 +48,9 @@ export interface SiteContent {
     heading: string
     readMoreLabel: string
     backLabel: string
+    problemLabel: string
+    approachLabel: string
+    resultsLabel: string
     entries: ProjectEntry[]
   }
   skills: {

@@ -71,6 +71,9 @@ export const en: SiteContent = {
     heading: 'Projects',
     readMoreLabel: 'Read case study',
     backLabel: '← Back to projects',
+    problemLabel: 'Problem',
+    approachLabel: 'Approach',
+    resultsLabel: 'Results',
     entries: [
       {
         slug: 'igsu-crm',

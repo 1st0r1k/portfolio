@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { LanguageProvider, useLanguage } from '@/context/LanguageContext'
 import { About } from './About'
@@ -15,6 +15,10 @@ function Wrapper() {
 }
 
 describe('About', () => {
+  beforeEach(() => {
+    window.localStorage.clear()
+  })
+
   it('renders the English paragraphs by default', () => {
     render(
       <LanguageProvider>

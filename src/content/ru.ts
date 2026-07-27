@@ -71,6 +71,9 @@ export const ru: SiteContent = {
     heading: 'Проекты',
     readMoreLabel: 'Читать кейс-стади',
     backLabel: '← Назад к проектам',
+    problemLabel: 'Проблема',
+    approachLabel: 'Решение',
+    resultsLabel: 'Результаты',
     entries: [
       {
         slug: 'igsu-crm',
