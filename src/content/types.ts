@@ -21,6 +21,7 @@ export interface ProjectEntry {
   tags: string[]
   link?: string
   image?: string
+  images?: string[]
 }
 
 export interface SkillCategory {

@@ -93,6 +93,8 @@ export const ru: SiteContent = {
           'Настроил CI с 900+ автотестами, Docker-деплой и автоматическими бэкапами.',
         ],
         tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'NextAuth', 'Docker'],
+        image: '/projects/igsu-crm-1.png',
+        images: ['/projects/igsu-crm-2.png', '/projects/igsu-crm-3.png'],
       },
       {
         slug: 'msb',

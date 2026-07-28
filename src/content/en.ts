@@ -93,6 +93,8 @@ export const en: SiteContent = {
           'Set up CI with 900+ automated tests, Docker deployment and automated backups.',
         ],
         tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'NextAuth', 'Docker'],
+        image: '/projects/igsu-crm-1.png',
+        images: ['/projects/igsu-crm-2.png', '/projects/igsu-crm-3.png'],
       },
       {
         slug: 'msb',

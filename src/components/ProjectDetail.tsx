@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
 import { ProjectThumbnail } from './ProjectThumbnail'
+import { ProjectGallery } from './ProjectGallery'
 import { IgsuCrmArchitecture } from './diagrams/IgsuCrmArchitecture'
 import { IgsuCrmProcess } from './diagrams/IgsuCrmProcess'
 import { MsbArchitecture } from './diagrams/MsbArchitecture'
@@ -39,6 +40,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
       <div className="mt-4">
         <ProjectThumbnail title={project.title} image={project.image} />
       </div>
+      {project.images && <ProjectGallery title={project.title} images={project.images} />}
       <ul className="mt-4 flex flex-wrap gap-2 font-mono text-xs text-text-secondary">
         {project.tags.map((tag) => (
           <li key={tag}>{tag}</li>

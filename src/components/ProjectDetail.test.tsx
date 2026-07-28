@@ -128,4 +128,28 @@ describe('ProjectDetail', () => {
     )
     expect(screen.queryByText(content.en.projects.processLabel)).toBeNull()
   })
+
+  it('renders a gallery of extra screenshots when the project has them', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail slug="igsu-crm" />
+      </LanguageProvider>
+    )
+    const project = content.en.projects.entries.find((p) => p.slug === 'igsu-crm')!
+    expect(project.images?.length).toBeGreaterThan(0)
+    project.images!.forEach((_, index) => {
+      expect(screen.getByRole('img', { name: `${project.title} screenshot ${index + 2}` })).toBeInTheDocument()
+    })
+  })
+
+  it('does not render a gallery for projects without extra screenshots', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail slug="msb" />
+      </LanguageProvider>
+    )
+    const project = content.en.projects.entries.find((p) => p.slug === 'msb')!
+    expect(project.images).toBeUndefined()
+    expect(screen.queryByRole('img', { name: new RegExp(`${project.title.split(' ')[0]} screenshot 2`) })).toBeNull()
+  })
 })
