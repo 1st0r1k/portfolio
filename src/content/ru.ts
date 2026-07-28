@@ -125,6 +125,7 @@ export const ru: SiteContent = {
           'Агрегировал вакансии из 5+ источников в единый пайплайн.',
         ],
         tags: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Redis', 'Docker'],
+        image: '/projects/careerai.png',
       },
     ],
   },

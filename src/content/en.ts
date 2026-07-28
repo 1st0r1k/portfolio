@@ -125,6 +125,7 @@ export const en: SiteContent = {
           'Aggregated job listings from 5+ sources into a unified pipeline.',
         ],
         tags: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Redis', 'Docker'],
+        image: '/projects/careerai.png',
       },
     ],
   },
